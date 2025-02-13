@@ -1,5 +1,1 @@
-# 介绍
-
-This is my private page. 这是我的个人网站。
-
-TEST 测试用。
+我的网站，很垃圾。
