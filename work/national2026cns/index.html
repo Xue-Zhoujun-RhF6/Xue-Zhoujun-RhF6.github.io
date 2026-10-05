@@ -1,64 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>征途薪火报</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <title>征途薪火报</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    background: #e8e0d0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-    padding: 40px 20px;
-  }
+    body {
+      /* 背景替换为 ./bg.png，同时保留柔和底色作为回退 */
+      background: #e8e0d0 url('./bg.png') no-repeat center center fixed;
+      background-size: cover;          /* 背景图自适应铺满 */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      padding: 40px 20px;
+      position: relative;
+    }
 
-  .title {
-    font-size: 42px;
-    font-weight: 900;
-    color: #c8102e;
-    letter-spacing: 6px;
-    text-align: center;
-    margin-bottom: 12px;
-  }
+    /* 可选：添加一层半透明遮罩，确保文字可读性 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(232, 224, 208, 0.3); /* 暖色半透明，柔和过渡 */
+      pointer-events: none; /* 让点击穿透到底层链接 */
+      z-index: 0;
+    }
 
-  .subtitle {
-    font-size: 16px;
-    color: #666;
-    letter-spacing: 3px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
+    /* 所有内容抬到遮罩之上 */
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
 
-  .pdf-link {
-    display: inline-block;
-    background: #c8102e;
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 14px 36px;
-    border-radius: 6px;
-    letter-spacing: 2px;
-    box-shadow: 0 4px 14px rgba(200,16,46,0.3);
-    transition: background 0.2s, transform 0.2s;
-  }
+    .title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #c8102e;
+      letter-spacing: 6px;
+      text-align: center;
+      margin-bottom: 12px;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+    }
 
-  .pdf-link:hover {
-    background: #a00d24;
-    transform: translateY(-2px);
-  }
+    .subtitle {
+      font-size: 16px;
+      color: #3a3a3a;
+      letter-spacing: 3px;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
 
-  .hint {
-    margin-top: 18px;
-    font-size: 12px;
-    color: #999;
-  }
-</style>
+    .pdf-link {
+      display: inline-block;
+      background: #c8102e;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 14px 36px;
+      border-radius: 6px;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 14px rgba(200, 16, 46, 0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+    }
+
+    .pdf-link:hover {
+      background: #a00d24;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(200, 16, 46, 0.5);
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #4a4a4a;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.9);
+      background: rgba(232, 224, 208, 0.5);
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+    }
+  </style>
 </head>
 <body>
 
@@ -66,5 +102,7 @@
   <p class="subtitle">纪念中国工农红军长征胜利90周年</p>
 
   <a class="pdf-link" href="./paper.pdf" target="_blank">打开电子报</a>
+  <p class="hint">点击按钮查看完整电子报</p>
+
 </body>
 </html>
